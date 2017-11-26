@@ -1,0 +1,45 @@
+#!/usr/bin/env python
+
+"""config
+Usage:
+  config (<file>...)
+  config (-h | --help)
+  config --version
+Options:
+  -h --help     Show this screen.
+  --version     Show version.
+"""
+
+from __future__ import print_function
+from collections import OrderedDict
+import sys
+
+from docopt import docopt
+import metayaml
+import yaml
+
+try:
+    from yaml import CDumper as Dumper
+except ImportError:
+    from yaml import Dumper
+
+def represent_odict(dumper, instance):
+     return dumper.represent_mapping(u'tag:yaml.org,2002:map', instance.items())
+
+yaml.add_representer(OrderedDict, represent_odict)
+
+def construct_odict(loader, node):
+    return OrderedDict(loader.construct_pairs(node))
+
+yaml.add_constructor(u'tag:yaml.org,2002:map', construct_odict)
+
+def main(args):
+  yaml.dump(
+    metayaml.read(args['<file>']),
+    sys.stdout,
+    default_flow_style=False,
+    Dumper=Dumper,
+  )
+
+if __name__ == '__main__':
+  main(docopt(__doc__, version='metayaml 0.0.0'))
