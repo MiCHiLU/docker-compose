@@ -1,0 +1,9 @@
+version: "3"
+services:
+
+  docker-clean:
+    image: zzrot/docker-clean
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock 
+    command:
+    - run
