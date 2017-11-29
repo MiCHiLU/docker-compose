@@ -1,0 +1,7 @@
+version: "3"
+services:
+
+  tinyproxy:
+    image: dannydirect/tinyproxy
+    ports:
+    - 443:8888
