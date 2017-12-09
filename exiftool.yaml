@@ -1,0 +1,7 @@
+version: "3"
+services:
+
+  exiftool:
+    image: michilu/docker-exiftool
+    volumes:
+    - $PWD:/root:rw
