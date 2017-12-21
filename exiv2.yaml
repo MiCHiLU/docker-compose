@@ -2,6 +2,6 @@ version: "3"
 services:
 
   exiftool:
-    image: michilu/docker-exiv2
+    image: michilu/docker-exiv2:0.25
     volumes:
     - $PWD:/root:rw
