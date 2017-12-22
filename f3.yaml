@@ -1,0 +1,22 @@
+version: "3"
+services:
+
+  f3write:
+    image: michilu/docker-f3
+    command: f3write
+
+  f3read:
+    image: michilu/docker-f3
+    command: f3read
+
+  f3probe:
+    image: michilu/docker-f3
+    command: f3probe
+
+  f3brew:
+    image: michilu/docker-f3
+    command: f3brew
+
+  f3fix:
+    image: michilu/docker-f3
+    command: f3fix
