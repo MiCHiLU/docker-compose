@@ -1,4 +1,6 @@
-    $ ./bin/metayaml *.yaml > ~/docker-compose.yml
+use yq (https://github.com/mikefarah/yq):
+
+    $ yq merge *.yaml > ~/docker-compose.yml
 
 .zshrc:
 
