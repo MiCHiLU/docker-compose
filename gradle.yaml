@@ -1,0 +1,7 @@
+version: "3"
+services:
+
+  gradle:
+    image: gradle
+    volumes:
+    - $PWD:/home/gradle:rw
