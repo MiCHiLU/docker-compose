@@ -6,6 +6,6 @@ services:
     ports:
     - 443:8888
     - 9000:9000
-    command: ${WEBHOOK_URLPREFIX}
+    command: ${TINYPROXY_WEBHOOK_URLPREFIX}
     environment:
       TINYPROXY_DISABLE_VIA_HEADER: ${TINYPROXY_DISABLE_VIA_HEADER}
