@@ -2,6 +2,8 @@ version: "3"
 services:
 
   java-docker:
-    image: java
+    image: java:alpine
     volumes:
     - $PWD:/root:rw
+    working_dir: /root
+    entrypoint: java
