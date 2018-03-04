@@ -10,6 +10,12 @@ use yq (https://github.com/mikefarah/yq):
       unset i
     fi;
 
+gcp:
+
+    $ gcloud auth login
+    $ open https://console.cloud.google.com/apis/credentials/serviceaccountkey
+    $ docker-machine create gcp
+
 conoha:
 
     conoha-cli network add-security-group --name docker
