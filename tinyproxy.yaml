@@ -2,6 +2,10 @@ version: "3"
 services:
 
   tinyproxy:
-    image: dannydirect/tinyproxy
+    image: michilu/docker-tinyproxy
     ports:
     - 443:8888
+    - 9000:9000
+    command: ${WEBHOOK_URLPREFIX}
+    environment:
+      TINYPROXY_DISABLE_VIA_HEADER: ${TINYPROXY_DISABLE_VIA_HEADER}
