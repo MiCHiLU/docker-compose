@@ -1,0 +1,25 @@
+version: "3"
+services:
+
+  webhook:
+    build:
+      context: dockerfile
+      dockerfile: webhook.Dockerfile
+    depends_on:
+    - _hook_data
+    links:
+    - _hook_data
+    ports:
+    - 9000:9000
+    tty: true
+    command: ${WEBHOOK_URLPREFIX}
+
+  _hook_data:
+    image: pataquets/gitfs
+    entrypoint:
+    - sh
+    - -c
+    - echo ${GITFS_REPOSITORY}|xargs -l1 gitfs && tail -f /dev/null
+    tty: true
+    environment:
+      GITFS_REPOSITORY: ${HOOK_DATA_GITFS_REPOSITORY}
