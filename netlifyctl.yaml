@@ -1,0 +1,7 @@
+version: "3"
+services:
+
+  netlifyctl:
+    image: michilu/netlifyctl
+    volumes:
+    - $PWD:/root:rw

@@ -1,0 +1,9 @@
+version: "3"
+services:
+
+  protoc:
+    image: znly/protoc
+    entrypoint:
+    - protoc
+    volumes:
+    - $PWD:/root:rw

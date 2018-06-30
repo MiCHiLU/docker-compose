@@ -1,0 +1,9 @@
+version: "3"
+services:
+
+  bazel:
+    image: insready/bazel
+    entrypoint:
+    - bazel
+    volumes:
+    - $PWD:/usr/src/app:rw

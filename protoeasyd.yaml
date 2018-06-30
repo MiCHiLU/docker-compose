@@ -1,0 +1,7 @@
+version: "3"
+services:
+
+  protoeasyd:
+    image: quay.io/pedge/protoeasy
+    ports:
+    - 6789:6789
