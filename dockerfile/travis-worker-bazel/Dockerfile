@@ -15,7 +15,8 @@ RUN \
     oracle-java8-installer \
   && rm -rf /var/lib/apt/lists/* \
   ;
-RUN useradd travis -G sudo -m -s /bin/bash \
+RUN \
+  useradd travis -G sudo -m -s /bin/bash \
   && echo '%sudo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
   && visudo -c \
   ;

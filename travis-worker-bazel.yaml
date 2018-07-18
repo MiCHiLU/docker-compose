@@ -5,10 +5,9 @@ services:
     build:
       context: dockerfile/travis-worker-bazel
     volumes:
-    - $PWD/build.sh:/home/travis/build.sh
     - $PWD:/home/travis/src:rw
     entrypoint:
     - /bin/bash
     - -c
     - |
-      ./setup.sh && ./build.sh
+      ./setup.sh && ./src/build.sh
