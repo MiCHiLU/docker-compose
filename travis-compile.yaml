@@ -1,0 +1,10 @@
+version: "3"
+services:
+
+  travis-compile:
+    build:
+      context: dockerfile
+      dockerfile: travis-compile.Dockerfile
+    tty: false
+    volumes:
+    - $PWD:/data:rw
