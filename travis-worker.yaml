@@ -1,0 +1,13 @@
+version: "3"
+services:
+
+  travis-worker:
+    build:
+      context: dockerfile/travis-worker
+    volumes:
+    - $PWD:/home/travis/src:rw
+    entrypoint:
+    - /bin/bash
+    - -c
+    - |
+      ./setup.sh && ./src/build.sh
