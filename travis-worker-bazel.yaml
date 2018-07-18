@@ -6,6 +6,9 @@ services:
       context: dockerfile/travis-worker-bazel
     volumes:
     - $PWD:/home/travis/src:rw
+    - $XDG_CACHE_HOME/bazel:$XDG_CACHE_HOME/bazel:rw
+    environment:
+    - XDG_CACHE_HOME=$XDG_CACHE_HOME
     entrypoint:
     - /bin/bash
     - -c
