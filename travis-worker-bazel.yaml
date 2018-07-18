@@ -1,0 +1,14 @@
+version: "3"
+services:
+
+  travis-worker-bazel:
+    build:
+      context: dockerfile/travis-worker-bazel
+    volumes:
+    - $PWD/build.sh:/home/travis/build.sh
+    - $PWD:/home/travis/src:rw
+    entrypoint:
+    - /bin/bash
+    - -c
+    - |
+      ./setup.sh && ./build.sh
