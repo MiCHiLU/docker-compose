@@ -2,8 +2,14 @@ version: "3"
 services:
 
   bazel:
-    image: insready/bazel
+    build:
+      context: dockerfile
+      dockerfile: bazel.Dockerfile
+    working_dir: /root/src
+    volumes:
+    - $PWD:/root/src:rw
+    - $XDG_CACHE_HOME/bazel:$XDG_CACHE_HOME/bazel:rw
+    environment:
+    - XDG_CACHE_HOME=$XDG_CACHE_HOME
     entrypoint:
     - bazel
-    volumes:
-    - $PWD:/usr/src/app:rw
