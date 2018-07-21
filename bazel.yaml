@@ -7,8 +7,8 @@ services:
       dockerfile: bazel.Dockerfile
     working_dir: /root/src
     volumes:
-    - $PWD:/root/src:rw
-    - $XDG_CACHE_HOME/bazel:$XDG_CACHE_HOME/bazel:rw
+    - $PWD:/root/src:rw,delegated
+    - $XDG_CACHE_HOME/bazel:$XDG_CACHE_HOME/bazel:rw,delegated
     environment:
     - XDG_CACHE_HOME=$XDG_CACHE_HOME
     entrypoint:
