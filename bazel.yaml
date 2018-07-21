@@ -12,4 +12,8 @@ services:
     environment:
     - XDG_CACHE_HOME=$XDG_CACHE_HOME
     entrypoint:
-    - bazel
+    - /bin/bash
+    - -c
+    - |
+      [ $XDG_CACHE_HOME ] && echo "startup --output_user_root=$XDG_CACHE_HOME/bazel" >> .bazelrc
+      bazel test --test_output=errors ...
