@@ -5,10 +5,12 @@ services:
     build:
       context: dockerfile
       dockerfile: bazel.Dockerfile
+    depends_on:
+    - _bazel-bg-sync
     working_dir: /root/src
     volumes:
     - $PWD:/root/src:rw,delegated
-    - $XDG_CACHE_HOME/bazel:$XDG_CACHE_HOME/bazel:rw,delegated
+    - bazel:$XDG_CACHE_HOME/bazel
     environment:
     - XDG_CACHE_HOME=$XDG_CACHE_HOME
     entrypoint:
@@ -17,3 +19,18 @@ services:
     - |
       [ $XDG_CACHE_HOME ] && echo "startup --output_user_root=$XDG_CACHE_HOME/bazel" >> .bazelrc
       bazel test --test_output=errors ...
+
+  _bazel-bg-sync:
+    image: cweagans/bg-sync
+    volumes:
+    - $XDG_CACHE_HOME/bazel:/source
+    - bazel:$XDG_CACHE_HOME/bazel
+    environment:
+    - SYNC_DESTINATION=$XDG_CACHE_HOME/bazel
+    - SYNC_PREFER=newer
+    - SYNC_MAX_INOTIFY_WATCHES=40000
+    - SYNC_VERBOSE=1
+    privileged: true
+
+volumes:
+  bazel:
