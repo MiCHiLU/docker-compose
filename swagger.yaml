@@ -1,0 +1,7 @@
+version: "3"
+services:
+
+  swagger:
+    image: quay.io/goswagger/swagger
+    volumes:
+    - $PWD:/root:rw

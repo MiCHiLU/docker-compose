@@ -1,0 +1,7 @@
+version: "3"
+services:
+
+  chrome-profile: # https://hub.docker.com/r/siomiz/chrome/
+    image: siomiz/chrome
+    volumes:
+    - $HOME/.config/chrome-remote-desktop:/home/chrome/.config/chrome-remote-desktop:rw

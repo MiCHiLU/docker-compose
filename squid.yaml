@@ -1,0 +1,12 @@
+version: "3"
+services:
+
+  squid:
+    image: datadog/squid
+    ports:
+    - 443:3128
+    - 9000:9000
+    command: ${SQUID_WEBHOOK_URLPREFIX}
+    environment:
+      SQUID_CONF: ${SQUID_CONF}
+      SQUID_DISABLE_VIA_HEADER: ${SQUID_DISABLE_VIA_HEADER}

@@ -1,0 +1,10 @@
+version: "3"
+services:
+
+  chromium-browser:
+    image: michilu/alpine-chrome
+    user: chrome
+    entrypoint:
+    - chromium-browser
+    volumes:
+    - $PWD:/usr/src/app:rw
