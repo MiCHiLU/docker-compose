@@ -1,4 +1,5 @@
 OPTOUT=\
+  bazel\
   gradle\
   java\
   protoc\
